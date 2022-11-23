@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:33:33 by crepou            #+#    #+#             */
-/*   Updated: 2022/11/23 13:29:54 by crepou           ###   ########.fr       */
+/*   Updated: 2022/11/23 17:41:53 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -467,8 +467,7 @@ int main(void)
 		i++;
 	}*/
 	
-	char *string = "hello!";
-	char **result = ft_split(string, ' ');
+	char **result = ft_split("\10\10\10\10hello!\10\10\10\10\10", '\10');
 	int i = 0;
 	if (result != NULL)
 	{

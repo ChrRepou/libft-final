@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:12:17 by crepou            #+#    #+#             */
-/*   Updated: 2022/11/19 17:03:41 by crepou           ###   ########.fr       */
+/*   Updated: 2022/11/23 16:23:59 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_calloc(size_t nitems, size_t size)
 {
 	void			*p;
 
+	if (size && SIZE_MAX / size < nitems)
+		return (NULL);
 	p = malloc(nitems * size);
 	if (p == NULL)
 		return (NULL);

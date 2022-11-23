@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:27:40 by crepou            #+#    #+#             */
-/*   Updated: 2022/11/17 17:37:59 by crepou           ###   ########.fr       */
+/*   Updated: 2022/11/23 17:23:54 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_calc_num(const char *end, int len)
 	return (num);
 }
 
-int	ft_allowed_chars(char c)
+int	ft_allowed_charstr(char c)
 {
 	if (c == '\n' || c == '\t' || c == '\f')
 		return (1);
@@ -46,28 +46,28 @@ int	ft_allowed_chars(char c)
 
 int	ft_atoi(const char *str)
 {
-	const char	*s;
 	int			len;
 	int			count;
 
-	s = str;
 	len = 0;
 	count = 0;
-	while (*s != '\0')
+	if (ft_strncmp(str, "\0", 1) == 0)
+		return (0);
+	while (*str != '\0')
 	{
-		if (*s == '-' || *s == '+' || ft_isdigit(*s))
+		if (*str == '-' || *str == '+' || ft_isdigit(*str))
 			break ;
-		if (!(ft_allowed_chars(*s)))
+		if (!(ft_allowed_charstr(*str)))
 			return (0);
 		count++;
-		s++;
+		str++;
 	}
-	s++;
+	str++;
 	len++;
-	while (ft_isdigit(*s) && *s != '\0')
+	while (ft_isdigit(*str) && *str != '\0')
 	{
 		len++;
-		s++;
+		str++;
 	}
-	return (ft_calc_num(s, len));
+	return (ft_calc_num(str, len));
 }

@@ -6,7 +6,7 @@
 /*   By: crepou <crepou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:18:45 by crepou            #+#    #+#             */
-/*   Updated: 2022/11/23 13:42:53 by crepou           ###   ########.fr       */
+/*   Updated: 2022/11/23 17:39:34 by crepou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,10 @@ char	**ft_split(char const *s, char c)
 	char		**final;
 	int			count;
 	int			i;
-	char const	*s1;
 
-	s1 = s;
 	count = ft_count_substrings(s, c);
+	if (!ft_isprint(c) && !(c >= 9 && c <=13)  && *s != '\0' && c != 0)
+		return (NULL);
 	final = (char **)malloc(sizeof(char *) * count);
 	if (final == NULL)
 		return (NULL);
