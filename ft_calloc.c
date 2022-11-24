@@ -12,6 +12,14 @@
 
 #include "libft.h"
 
+/***********************************************************************************************************
+ * void	*ft_calloc --> allocates memory for nitems of size size each and then sets this memory with zeros
+ *
+ * @params size_t nitmes --> the number of items that I want to allocate memory for
+ * @params size_t size --> the size of each item
+ *
+ * if SIZE_MAX / size < nitems that means that we don't have enough space to allocate so we return NULL
+ ***********************************************************************************************************/
 void	*ft_calloc(size_t nitems, size_t size)
 {
 	void			*p;

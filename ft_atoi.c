@@ -12,7 +12,38 @@
 
 #include "libft.h"
 
-int	ft_calc_num(const char *end, int len)
+/* ************************************************************************************ */
+/* int ft_calc_num --> takes the string number from the end and moves to the start
+ * until it converts every character into digit
+ *
+ * It was easier to convert this string into a num in this way because the most left
+ * digit is the one with the bigger value
+ *
+ * @params const char *end --> a pointer to the end of the number string
+ * @params int len --> the length of the string including the symbol (-, +)
+ *
+ * @return value --> the integer derives from the string
+ * ************************************************************************************ */
+/* int	ft_allowed_chars --> checks if the current character of the string is
+ * an allowed character (\n \t \r \v \f space)
+ *
+ * @params char c --> the current character of the string
+ *
+ * @return value --> 1 if is an allowed char or 0 if it's not
+* ************************************************************************************ */
+/* int	ft_atoi(const char *str) --> returns the conversion of a string into an integer
+ *
+ * @params const char *str --> a pointer to a string
+ *
+ * if the string is empty then the return value is 0
+ * Then we move the pointer str until we find +,-,0-9 or we reach the end of the string
+ * if the string has not allowed characters before we reach a symbol or a number the
+ * function returns 0
+ * After that we move the pointer of the string as we count the number of digits in it
+ * The we pass this pointer in the ft_calc_num function and we return the integer
+ * calculated by the function
+ */
+static int	ft_calc_num(const char *end, int len)
 {
 	int			num;
 	int			mult;
@@ -35,7 +66,7 @@ int	ft_calc_num(const char *end, int len)
 	return (num);
 }
 
-int	ft_allowed_charstr(char c)
+static int	ft_allowed_chars(char c)
 {
 	if (c == '\n' || c == '\t' || c == '\f')
 		return (1);
@@ -57,7 +88,7 @@ int	ft_atoi(const char *str)
 	{
 		if (*str == '-' || *str == '+' || ft_isdigit(*str))
 			break ;
-		if (!(ft_allowed_charstr(*str)))
+		if (!(ft_allowed_chars(*str)))
 			return (0);
 		count++;
 		str++;
